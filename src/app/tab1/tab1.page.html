@@ -1,0 +1,62 @@
+<ion-header color="primary">
+  <ion-toolbar color="primary" tabindex="0">
+    <ion-title class="ion-text-center">
+      Inicio
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="primary">
+  <ion-grid no-padding class="ion-margin-top">
+    <ion-row class="ion-justify-content-center">
+      <ion-img src="/assets/img/logo.png" tabindex="0"></ion-img>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-img src="/assets/img/inicio.gif"></ion-img>
+    </ion-row>
+  </ion-grid>
+
+  <div class="header-banner ion-margin-top">
+    <ion-slides class="home-slide" autoplay="3000" loop tabindex="0">
+      <ion-slide *ngFor="let a of publicidad">
+        <img [src]="a.imagen | imagen:'publicidad'" class="slide" alt="">
+      </ion-slide>     
+    </ion-slides>
+  </div>
+
+
+  <ion-grid fixed>
+    <ion-row class="ion-justify-content-center ion-margin-top">
+        <vg-player>
+            <video #media #vgHls="vgHls" [vgMedia]="media"
+              [vgHls]="url_Video" id="singleVideo" controls
+              crossorigin>
+            </video>
+        </vg-player>
+
+    </ion-row>
+  </ion-grid>
+
+
+  <ion-grid no-padding style="margin-bottom: 0%;">
+      <ion-card color="tertiary" class="mt-5">
+        <ion-card-content class="m-0">
+          <ion-row class="align-items-center">
+            <ion-col size="6" *ngFor="let r of redes">
+              <ul class="ul-horizontal">
+                <li class="icono">               
+                    <img [src]="r.tipo | imagen:'redes' " class="icon">              
+                </li>
+                <li class="name">
+                    <h5>{{r.nickname}}</h5>
+                </li>
+              </ul>          
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-grid>
+
+
+
+</ion-content>

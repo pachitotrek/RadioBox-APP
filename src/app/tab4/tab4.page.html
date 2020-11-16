@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Nosotros</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid no-padding>
+    <ion-row class="ion-margin-top">
+      <ion-img src="/assets/img/logo.png"></ion-img>
+    </ion-row>
+    <ion-row>
+      <ion-col size="11" class="margen">
+        <ion-text color="primary" class="ion-text-justify">
+          <h1>{{nosotros.titulo}}</h1>
+          <p>{{nosotros.texto}}</p>
+        </ion-text>
+        <ion-img [src]="nosotros.imagen | imagen:'nosotros' "></ion-img>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <ion-grid no-padding style="margin-bottom: 0%;">
+    <ion-card color="tertiary" class="mt-5">
+      <ion-card-content class="m-0">
+        <ion-row class="align-items-center">
+          <ion-col size="6" *ngFor="let r of redes">
+            <ul class="ul-horizontal">
+              <li class="icono">               
+                  <img [src]="r.tipo | imagen:'redes' " class="icon">              
+              </li>
+              <li class="name">
+                  <h5>{{r.nickname}}</h5>
+              </li>
+            </ul>          
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </ion-grid>
+
+
+</ion-content>

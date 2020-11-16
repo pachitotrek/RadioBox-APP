@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">
+      <h2>En vivo</h2>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+  <ion-grid fixed>
+      <ion-row align-items-center>
+          <ion-col size="12" class="ion-text-center">              
+            <ion-img src="/assets/img/letra.png" class="letra"></ion-img>
+          </ion-col>
+        </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-img src="/assets/img/rb2.png" class="box"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col [ngClass]="{'On': show == true,'Off': show == false}" size="12" class="ion-text-center reproductor ">        
+        <ion-img  src="/assets/img/radio.gif" class="equalizador" ></ion-img>      
+      </ion-col>
+      <ion-col [ngClass]="{'Off': show == true, 'On': show == false}"  size="12" class="ion-text-center reproductor">        
+          <ion-img  src="/assets/img/linea.png" class="equalizador" ></ion-img>        
+        </ion-col>
+      
+    </ion-row>
+    <ion-row align-items-center class="ion-margin-top">
+      <ion-col size="5">
+        
+      </ion-col>
+      <ion-col size="2" class="ion-text-center margen">                               
+     
+      <vg-player #vgplayer style="height:50px;width: 50px;border-radius: 10px;background-color: #00a5e0" (onPlayerReady)="onPlayerReady($event)">
+          <vg-controls style="align-self: center">            
+            <vg-play-pause (click)="StopAudio()"></vg-play-pause>     
+          </vg-controls>
+          <audio #reproductor #vgHls="vgHls" [vgMedia]="reproductor" id="myAudio"
+            [vgHls]="url_Sonido" crossorigin preload="auto" >
+          </audio>
+        </vg-player>
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+        <ion-col size="12" class="ion-text-center">
+          <h6 color="tertiary">Copryright RadioBox 2019</h6>  
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+
+  
+  <ion-grid no-padding style="margin-bottom: 0%;">
+      <ion-card color="tertiary" class="mt-5">
+        <ion-card-content class="m-0">
+          <ion-row class="align-items-center">
+            <ion-col size="6" *ngFor="let r of redes">
+              <ul class="ul-horizontal">
+                <li class="icono">               
+                    <img [src]="r.tipo | imagen:'redes' " class="icon">              
+                </li>
+                <li class="name">
+                    <h5>{{r.nickname}}</h5>
+                </li>
+              </ul>          
+            </ion-col>
+          </ion-row>
+          
+
+        </ion-card-content>
+       
+      </ion-card>
+    </ion-grid>
+
+
+</ion-content>
